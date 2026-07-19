@@ -181,6 +181,10 @@ A skill is just a markdown file. Copy the skill folder's `SKILL.md` content into
 
 These ship with Claude Code itself — nothing to clone: `dataviz`, `artifact-design`, `artifact-capabilities`, `update-config`, `keybindings-help`, `verify`, `run`, `code-review`, `review` (PR review), `security-review`, `simplify`, `fewer-permission-prompts`, `loop`, `schedule`, `claude-api`, `init`.
 
+## Additional references
+
+- [affaan-m/ECC](https://github.com/affaan-m/ECC/tree/main) — agent harness performance optimization system: skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond
+
 ## License
 
 This repo (README, install script) is [MIT](LICENSE). Each linked skill remains under its own upstream license — check the source repo before redistributing.
