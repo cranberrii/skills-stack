@@ -184,6 +184,7 @@ These ship with Claude Code itself — nothing to clone: `dataviz`, `artifact-de
 ## Additional references
 
 - [affaan-m/ECC](https://github.com/affaan-m/ECC/tree/main) — agent harness performance optimization system: skills, instincts, memory, security, and research-first development for Claude Code, Codex, Opencode, Cursor and beyond
+- [garrytan/gstack](https://github.com/garrytan/gstack) — Garry Tan's Claude Code setup: 23 opinionated tools serving as CEO, Designer, Eng Manager, Release Manager, Doc Engineer, and QA
 
 ## License
 
