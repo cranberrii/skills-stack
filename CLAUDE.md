@@ -4,12 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this repo is
 
-A curated inventory of agent skills and plugins, not a codebase. Nothing is vendored: `README.md` catalogs each skill grouped by creator with links to upstream source repos, and `install.sh` installs them fresh from upstream via `npx skills add`.
+A curated inventory of agent skills and plugins, not a codebase. `README.md` catalogs each skill grouped by creator with links to upstream source repos, and `install.sh` installs them fresh from upstream via `npx skills add`. The only exception is `skills/` — the owner's own skills, vendored here so this repo is itself an installable source (`npx skills add cranberrii/skills-stack`).
 
-## The two files that matter
+## The files that matter
 
 - `README.md` — the catalog. Skills grouped by creator, one table per source repo.
-- `install.sh` — loops over the upstream repos and runs `npx skills add <repo> "$@"` (extra args like `-a claude-code` pass through to target specific agents).
+- `install.sh` — loops over the source repos (including this one) and runs `npx skills add <repo> "$@"` (extra args like `-a claude-code` pass through to target specific agents).
+- `skills/<name>/SKILL.md` — the vendored own-skills. Adding one here means adding a row to the README's "My skills" table.
 
 ## Keeping them in sync
 

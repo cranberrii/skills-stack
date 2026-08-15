@@ -4,6 +4,7 @@
 set -euo pipefail
 
 for repo in \
+  cranberrii/skills-stack \
   mattpocock/skills \
   obra/superpowers \
   safishamsi/graphify \

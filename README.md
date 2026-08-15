@@ -1,6 +1,6 @@
 # skills-stack
 
-My agent skills setup — every skill and plugin I find helpful for my workflow, grouped by creator with links back to the original source repos. Nothing is vendored here: install commands pull each skill fresh from upstream.
+My agent skills setup — every skill and plugin I find helpful for my workflow, grouped by creator with links back to the original source repos. Install commands pull each skill fresh from upstream.
 
 Skills are plain folders containing a `SKILL.md` (plus optional resources), so they work with any agent that reads the [Agent Skills](https://agentskills.io) format: Claude Code, Codex, Cursor, OpenCode, Amp, Gemini CLI, Droid, and ~70 others.
 
@@ -18,6 +18,7 @@ The [skills CLI](https://github.com/vercel-labs/skills) auto-detects which codin
 Or pick individual sources:
 
 ```bash
+npx skills add cranberrii/skills-stack        # my own skills
 npx skills add mattpocock/skills              # Matt Pocock's engineering + writing skills
 npx skills add obra/superpowers               # Jesse Vincent's process skills
 npx skills add safishamsi/graphify            # knowledge graphs
@@ -41,6 +42,12 @@ npx skills add mattpocock/skills -a claude-code -a codex -a opencode
 /plugin install superpowers@claude-plugins-official
 ```
 
+Matt Pocock's skills are also in the official marketplace as `mattpocock-skills` — an auto-updating, read-only bundle. It's Claude Code only, and installing it *alongside* the skills-CLI copies above leaves you with every skill twice, so pick one:
+
+```
+/plugin install mattpocock-skills@claude-plugins-official
+```
+
 Ponytail installs from its own marketplace:
 
 ```
@@ -54,41 +61,74 @@ A skill is just a markdown file. Copy the skill folder's `SKILL.md` content into
 
 ## Skills
 
+### My skills
+
+**Source:** `skills/` in this repo. Install with `npx skills add cranberrii/skills-stack`.
+
+| Skill | Description |
+|---|---|
+| `codebase-catch-up` | Briefing on what changed in the repo since you last looked — what landed, review, what to do next. Tracks a baseline SHA in `.git/catch-up-baseline`, so each run covers only the new delta |
+| `explain-diff-html` | Rich, self-contained HTML explainer for a diff, branch, or PR — background, intuition, code walkthrough, and an interactive quiz |
+
 ### Matt Pocock
 
 **Source:** [mattpocock/skills](https://github.com/mattpocock/skills) — "Skills for Real Engineers. Straight from my .claude directory."
 
+Upstream groups these into `engineering`, `productivity`, `misc`, and `in-progress`. Run `/setup-matt-pocock-skills` once per repo before using the engineering set.
+
+**Engineering**
+
 | Skill | Description |
 |---|---|
-| `setup-matt-pocock-skills` | One-time repo setup (issue tracker, triage labels, doc layout) for the engineering skills below |
+| `setup-matt-pocock-skills` | One-time repo setup (issue tracker, triage label vocabulary, doc layout) for the engineering skills below |
+| `ask-matt` | Router over this repo — asks which skill or flow fits your situation |
 | `tdd` | Test-driven development: red-green-refactor, one vertical slice at a time |
-| `diagnose` / `diagnosing-bugs` | Disciplined diagnosis loop: reproduce → minimise → hypothesise → instrument → fix → regression-test |
-| `grilling` / `grill-me` / `grill-with-docs` | Relentless interview to stress-test a plan or design (with-docs variant also writes ADRs and a glossary) |
-| `to-issues` | Break a plan/spec/PRD into independently-grabbable tracer-bullet issues |
-| `to-prd` | Turn the current conversation into a PRD on the issue tracker |
-| `triage` | Move issues and external PRs through triage roles into agent-ready briefs |
-| `implement` | Implement a piece of work from a PRD or set of issues |
-| `qa` | Conversational QA session that files GitHub issues as you report bugs |
-| `review` | Review changes since a fixed point along Standards and Spec axes, in parallel sub-agents |
-| `request-refactor-plan` | Interview-driven refactor plan with tiny commits, filed as a GitHub issue |
+| `diagnosing-bugs` | Disciplined diagnosis loop: reproduce → minimise → hypothesise → instrument → fix → regression-test |
+| `to-spec` | Turn the current conversation into a spec on the issue tracker — synthesis, no interview |
+| `to-tickets` | Break a plan or spec into tracer-bullet tickets, each declaring its blocking edges |
+| `triage` | Move issues and external PRs through a state machine of triage roles into agent-ready briefs |
+| `implement` | Implement a piece of work from a spec or set of tickets |
+| `wayfinder` | Map work too big for one session as decision tickets, resolved one at a time |
+| `code-review` | Review changes since a fixed point along Standards and Spec axes, in parallel sub-agents |
 | `improve-codebase-architecture` | Scan for deepening opportunities, present as visual HTML report, grill through picks |
 | `codebase-design` | Shared vocabulary for designing deep modules |
-| `design-an-interface` | Generate radically different interface designs via parallel sub-agents ("design it twice") |
-| `domain-modeling` | Build and sharpen a project's domain model |
-| `ubiquitous-language` | Extract a DDD-style glossary from the conversation |
-| `decision-mapping` | Turn a loose idea into sequenced investigation tickets |
-| `zoom-out` | Step back and look at the bigger picture of the codebase |
-| `prototype` | Throwaway prototype to flesh out a design |
+| `domain-modeling` | Build and sharpen a project's domain model — CONTEXT.md, ADRs, terminology |
+| `grill-with-docs` | Relentless interview to sharpen a plan, writing ADRs and a glossary as it goes |
+| `prototype` | Throwaway prototype to answer a design question |
+| `research` | Investigate a question against primary sources, capture findings as Markdown in the repo |
+| `resolving-merge-conflicts` | Resolve in-progress git merge/rebase conflicts |
+| `wizard` | Generate an interactive bash wizard for steps only a human can perform |
+
+**Productivity**
+
+| Skill | Description |
+|---|---|
+| `grilling` / `grill-me` | Relentless interview to stress-test a plan, decision, or idea |
 | `handoff` | Compact the conversation into a handoff document for another agent |
 | `teach` | Teach a new skill or concept within the workspace |
-| `resolving-merge-conflicts` | Resolve in-progress git merge/rebase conflicts |
+| `to-questionnaire` | Turn a decision you can't fully answer into a questionnaire for someone else |
+| `wait-what` | Stop — that last message didn't land, re-pitch it |
+| `writing-for-agents` | Writing documents for agents: skills, AGENTS.md, CLAUDE.md |
+
+**Misc**
+
+| Skill | Description |
+|---|---|
 | `git-guardrails-claude-code` | PreToolUse hooks that block dangerous git commands (push, reset --hard, clean, branch -D) |
 | `scaffold-exercises` | Scaffold course exercise structures with problems, solutions, explainers |
-| `write-a-skill` / `writing-great-skills` | Create new agent skills with proper structure and progressive disclosure |
+| `setup-pre-commit` | Husky + lint-staged pre-commit hooks with typecheck and tests |
+| `migrate-to-shoehorn` | Replace `as` assertions in tests with `@total-typescript/shoehorn` |
+
+**In progress** (upstream calls these unfinished — install at your own risk)
+
+| Skill | Description |
+|---|---|
+| `claude-handoff` | Hand the conversation to a fresh background agent that picks up immediately |
+| `loop-me` | Grill you about specs for the workflows you want to build |
+| `setup-ts-deep-modules` | Wire dependency-cruiser into a TS repo so each package is a deep module |
 | `writing-fragments` | Grilling session that mines you for raw writing fragments |
 | `writing-shape` | Shape raw material into an article, paragraph by paragraph |
-| `writing-beats` | Assemble an article as a journey of beats, choose-your-own-adventure style |
-| `edit-article` | Edit and improve article drafts |
+| `writing-beats` | Assemble raw material into a journey of beats, grounding terms as it goes |
 
 ### Jesse Vincent (obra)
 
