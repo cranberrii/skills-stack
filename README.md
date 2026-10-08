@@ -55,6 +55,32 @@ Ponytail installs from its own marketplace:
 /plugin install ponytail@ponytail
 ```
 
+### Diagram Design (Claude Code, Codex, Pi)
+
+`diagram-design` ships as a native package for each agent. Use these instead of `npx skills add`, which installs only the skill and leaves out the export/import/profile/doctor commands.
+
+Claude Code (then turn on auto-update: `/plugin` → **Marketplaces** → **diagram-design** → **Enable auto-update**):
+
+```
+/plugin marketplace add cathrynlavery/diagram-design
+/plugin install diagram-design@diagram-design
+```
+
+Codex (refreshes at startup; `codex plugin marketplace upgrade diagram-design` to fetch now):
+
+```bash
+codex plugin marketplace add cathrynlavery/diagram-design
+codex plugin add diagram-design@diagram-design
+```
+
+Pi (run `/reload` in an open session; Pi doesn't auto-update, so run `pi update --extensions` to pull updates):
+
+```bash
+pi install https://github.com/cathrynlavery/diagram-design
+```
+
+PNG export needs Playwright once: `pip install playwright && playwright install chromium`.
+
 ### Agents without skills support (Devin, etc.)
 
 A skill is just a markdown file. Copy the skill folder's `SKILL.md` content into whatever persistent context the agent supports — Devin's Knowledge/Playbooks, a `AGENTS.md` section, or the agent's custom-instructions field.
@@ -171,6 +197,20 @@ Upstream groups these into `engineering`, `productivity`, `misc`, and `in-progre
 | `ponytail-debt` | Harvest `ponytail:` shortcut comments into a debt ledger |
 | `ponytail-gain` | Scoreboard of ponytail's measured savings |
 | `ponytail-help` | Quick-reference card for all ponytail commands |
+
+### Cathryn Lavery
+
+**Source:** [cathrynlavery/diagram-design](https://github.com/cathrynlavery/diagram-design). Install it as a plugin (see [Diagram Design](#diagram-design-claude-code-codex-pi) above).
+
+| Skill / command | Description |
+|---|---|
+| `diagram-design` | Editorial diagrams as self-contained HTML + SVG: architecture, flowchart, sequence, ER, timeline, swimlane, Sankey, Gantt, Wardley, and dozens more |
+| `export-diagram` | Export a diagram HTML file to `.svg` and `.png` next to the source |
+| `import-mermaid` / `import-excalidraw` / `import-drawio` | Redraw Mermaid, Excalidraw, or draw.io sources as editorial diagrams |
+| `profile` | Save and load per-client brand profiles (selected per project with a `.diagram-design` marker) |
+| `doctor` | One-shot environment check for diagram-design readiness |
+
+In Claude Code these are namespaced (`/diagram-design:export-diagram`). In Pi, invoke the skill with `/skill:diagram-design` and the commands as `/export-diagram`, `/profile`, and so on. In Codex, ask for a diagram in plain language.
 
 ### Julius Brussee
 
