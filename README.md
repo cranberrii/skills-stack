@@ -24,6 +24,7 @@ npx skills add obra/superpowers               # Jesse Vincent's process skills
 npx skills add safishamsi/graphify            # knowledge graphs
 npx skills add juliusbrussee/caveman          # compressed output mode
 npx skills add wandb/weave-integration-skills # W&B Weave tracing
+npx skills add ai-evals-course/evals-skills   # LLM eval workflows
 npx skills add forrestchang/andrej-karpathy-skills
 npx skills add vercel-labs/skills/skills/find-skills
 ```
@@ -243,6 +244,22 @@ In Claude Code these are namespaced (`/diagram-design:export-diagram`). In Pi, i
 | Skill | Description |
 |---|---|
 | `weave-integration` | Add W&B Weave observability/LLM tracing to existing apps: trace-first instrumentation, then evals |
+
+### Evals Skills
+
+**Source:** [ai-evals-course/evals-skills](https://github.com/ai-evals-course/evals-skills)
+
+| Skill | Description |
+|---|---|
+| `evals-start` | Entry point — routes you to the right eval skill when you don't know where to begin |
+| `eval-audit` | Audit an existing eval pipeline: missing error analysis, unvalidated judges, vanity metrics |
+| `error-discovery` | Run error analysis on a dataset: sample traces, annotate, organize failure modes |
+| `build-review-interface` | Build a custom browser annotation UI for reviewing LLM traces |
+| `generate-synthetic-data` | Dimension-based synthetic test inputs for bootstrapping an eval dataset |
+| `write-code-eval` | Code evaluators for failure modes with objective rules |
+| `write-judge-prompt` | LLM-as-judge prompts for subjective criteria |
+| `validate-evaluator` | Calibrate an LLM judge against human labels (TPR/TNR, bias correction) |
+| `evaluate-rag` | Evaluate RAG retrieval and generation quality |
 
 ### Anthropic (official plugins)
 

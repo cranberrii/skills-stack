@@ -10,6 +10,7 @@ for repo in \
   safishamsi/graphify \
   juliusbrussee/caveman \
   wandb/weave-integration-skills \
+  ai-evals-course/evals-skills \
   forrestchang/andrej-karpathy-skills \
   vercel-labs/skills/skills/find-skills
 do
