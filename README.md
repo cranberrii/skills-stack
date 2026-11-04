@@ -82,6 +82,18 @@ pi install https://github.com/cathrynlavery/diagram-design
 
 PNG export needs Playwright once: `pip install playwright && playwright install chromium`.
 
+### Impeccable (own installer)
+
+`impeccable` ships its own installer, which adds a design hook and subagents on top of the skill. Use it instead of `npx skills add`:
+
+```bash
+npx impeccable install                                             # interactive: pick tools, project or global scope, accept the hook
+npx impeccable install --providers=claude,pi --scope=global        # non-interactive
+npx impeccable update                                              # refresh an existing install
+```
+
+Reload your agent, then run `/impeccable init` once per project.
+
 ### Agents without skills support (Devin, etc.)
 
 A skill is just a markdown file. Copy the skill folder's `SKILL.md` content into whatever persistent context the agent supports — Devin's Knowledge/Playbooks, a `AGENTS.md` section, or the agent's custom-instructions field.
@@ -212,6 +224,16 @@ Upstream groups these into `engineering`, `productivity`, `misc`, and `in-progre
 | `doctor` | One-shot environment check for diagram-design readiness |
 
 In Claude Code these are namespaced (`/diagram-design:export-diagram`). In Pi, invoke the skill with `/skill:diagram-design` and the commands as `/export-diagram`, `/profile`, and so on. In Codex, ask for a diagram in plain language.
+
+### Paul Bakaus
+
+**Source:** [pbakaus/impeccable](https://github.com/pbakaus/impeccable). Install with its own installer (see [Impeccable](#impeccable-own-installer) above).
+
+| Skill / agent | Description |
+|---|---|
+| `impeccable` | Design vocabulary for frontend work, one skill with 23 commands (`/impeccable <command> <target>`): steer (`bolder`, `quieter`, `distill`, `colorize`, `typeset`, `layout`, `animate`, `delight`, `overdrive`), review (`critique`, `audit`), finish (`polish`, `harden`, `clarify`, `adapt`, `optimize`, `onboard`), iterate live (`live`, `generate`), set up (`shape`, `init`, `document`, `extract`) |
+| design hook | Runs a deterministic AI-slop detector (62 rules) on every UI file the agent edits. Also available standalone as `npx impeccable detect <path-or-url>` |
+| `impeccable-finish-reviewer` / `-documenter` / `-asset-producer` / `-manual-edit-applier` | Subagents for reviewing a finished build, writing `DESIGN.md`, producing raster assets, and applying live-mode copy edits |
 
 ### Julius Brussee
 
