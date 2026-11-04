@@ -11,8 +11,8 @@ Skills are plain folders containing a `SKILL.md` (plus optional resources), so t
 The [skills CLI](https://github.com/vercel-labs/skills) auto-detects which coding agents you have installed and puts each skill in the right place. One command installs everything:
 
 ```bash
-./install.sh                          # all skills, all detected agents
-./install.sh -a claude-code -a codex  # or target specific agents
+./install.sh                          # all skills -> Claude Code + Pi
+./install.sh -a codex -a cursor       # or target other agents instead
 ```
 
 Or pick individual sources:
@@ -23,8 +23,8 @@ npx skills add mattpocock/skills              # Matt Pocock's engineering + writ
 npx skills add obra/superpowers               # Jesse Vincent's process skills
 npx skills add safishamsi/graphify            # knowledge graphs
 npx skills add juliusbrussee/caveman          # compressed output mode
-npx skills add wandb/weave-integration-skills # W&B Weave tracing
 npx skills add ai-evals-course/evals-skills   # LLM eval workflows
+npx skills add cloudflare/security-audit-skill # security audits
 npx skills add forrestchang/andrej-karpathy-skills
 npx skills add vercel-labs/skills/skills/find-skills
 ```
@@ -237,14 +237,6 @@ In Claude Code these are namespaced (`/diagram-design:export-diagram`). In Pi, i
 |---|---|
 | `find-skills` | Discover and install skills from the open agent skills ecosystem (`npx skills`) |
 
-### Weights & Biases
-
-**Source:** [wandb/weave-integration-skills](https://github.com/wandb/weave-integration-skills)
-
-| Skill | Description |
-|---|---|
-| `weave-integration` | Add W&B Weave observability/LLM tracing to existing apps: trace-first instrumentation, then evals |
-
 ### Evals Skills
 
 **Source:** [ai-evals-course/evals-skills](https://github.com/ai-evals-course/evals-skills)
@@ -260,6 +252,14 @@ In Claude Code these are namespaced (`/diagram-design:export-diagram`). In Pi, i
 | `write-judge-prompt` | LLM-as-judge prompts for subjective criteria |
 | `validate-evaluator` | Calibrate an LLM judge against human labels (TPR/TNR, bias correction) |
 | `evaluate-rag` | Evaluate RAG retrieval and generation quality |
+
+### Cloudflare
+
+**Source:** [cloudflare/security-audit-skill](https://github.com/cloudflare/security-audit-skill)
+
+| Skill | Description |
+|---|---|
+| `security-audit` | Source-first security review and full codebase audits: recon, coverage-led hunting with isolated agents, independent validation of every candidate, and schema-checked `findings.json` + `REPORT.md` output |
 
 ### Anthropic (official plugins)
 
